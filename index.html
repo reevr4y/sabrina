@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy 18th Sabrina 🎉</title>
+  <title>Countdown Ketemu di Sekolah ✨</title>
   <style>
     :root{
       --bg1:#0f172a;
@@ -22,141 +22,31 @@
       display:flex;align-items:center;justify-content:center;padding:36px;
       overflow:hidden;
     }
-
     .stars{position:absolute;inset:0;pointer-events:none}
     .star{position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.15);border-radius:50%;filter:blur(.6px)}
 
-    .container{width:100%;max-width:920px;display:grid;grid-template-columns:1fr 360px;gap:28px;z-index:5;align-items:center}
+    .container{width:100%;max-width:720px;z-index:5;text-align:center}
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border-radius:18px;padding:32px;box-shadow:0 10px 35px rgba(2,6,23,0.6);backdrop-filter: blur(6px);
       border:1px solid rgba(255,255,255,0.03);
     }
-
-    .hero-title{font-size:36px;margin:0 0 8px 0;letter-spacing: -0.6px}
-    .sub{opacity:0.9;margin:0 0 18px 0}
-    .name{display:flex;align-items:center;gap:12px}
-    .name .badge{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:6px 12px;border-radius:999px;font-weight:700;color:#04111a}
-    .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .meta .pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:600}
-
-    .panel{padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .date{font-weight:700;font-size:20px}
-    .age{font-size:72px;font-weight:800;margin-top:6px}
-    .label{opacity:0.9}
-
-    .btn{margin-top:18px;padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04111a}
-
-    canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:9}
-    .typewriter{font-family:monospace;background:rgba(0,0,0,0.08);padding:12px;border-radius:10px;margin-top:18px;min-height:46px}
-    .floating-heart{position:absolute;width:40px;height:40px;left:50%;transform:translateX(-50%);bottom:10px;opacity:0}
-
-    /* SLIDER STYLE */
-    .slider{
-      position:relative;
-      width:100%;
-      overflow:hidden;
-      border-radius:16px;
-      margin-top:20px;
-      box-shadow:0 0 20px rgba(255,192,203,0.4);
-    }
-    .slides{
-      display:flex;
-      transition:transform 0.6s ease;
-    }
-    .slides img{
-      width:100%;
-      flex-shrink:0;
-    }
-    .prev,.next{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(0,0,0,0.4);
-      border:none;
-      color:white;
-      font-size:24px;
-      padding:8px 12px;
-      border-radius:50%;
-      cursor:pointer;
-    }
-    .prev{left:10px;}
-    .next{right:10px;}
-    .dots{
-      text-align:center;
-      position:absolute;
-      bottom:10px;
-      width:100%;
-    }
-    .dots span{
-      height:10px;
-      width:10px;
-      margin:0 4px;
-      display:inline-block;
-      border-radius:50%;
-      background:#bbb;
-      cursor:pointer;
-    }
-    .dots .active{background:var(--accent);}
-
-    @media (max-width:900px){.container{grid-template-columns:1fr;}.panel{order:-1}}
+    .hero-title{font-size:32px;margin:0 0 12px 0}
+    .countdown-box{margin-top:18px;font-size:22px;font-weight:600}
   </style>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <canvas id="confetti"></canvas>
-
+  <div class="stars"></div>
   <div class="container">
-    <div class="card" role="main">
-      <h1 class="hero-title">Untuk Sabrina — Happy 18th ✨</h1>
-      <div class="sub">Selamat ulang tahun, Sabrina! Semoga hari ini dipenuhi tawa, lagu favorit, dan momen-momen manis.</div>
-
-      <!-- SLIDER -->
-      <div class="slider">
-        <div class="slides">
-          <img src="sabrina1.jpg" alt="Foto Sabrina 1">
-          <img src="sabrina2.jpg" alt="Foto Sabrina 2">
-          <img src="sabrina3.jpg" alt="Foto Sabrina 3">
-        </div>
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
-        <div class="dots"></div>
-      </div>
-
-      <div class="name">
-        <div style="font-size:20px;">Sabrina</div>
-        <div class="badge">18</div>
-      </div>
-
-      <div class="meta">
-        <div class="pill">Tanggal: 1 Oktober 2025</div>
-        <div class="pill">Usia: 18 tahun ❤️</div>
-        <div class="pill">Dari: Reii</div>
-      </div>
-
-      <div class="typewriter" id="typewriter" aria-live="polite"></div>
-
-      <button class="btn" id="surpriseBtn">🎉 Confetti + Surprise</button>
+    <div class="card">
+      <h1 class="hero-title">Countdown Ketemu di Sekolah ✨</h1>
+      <p>Kita bakal ketemu lagi tanggal <b>20 Oktober 2025</b> 🤍</p>
+      <div class="countdown-box" id="countdown">-- hari --:--:--</div>
     </div>
-
-    <aside class="panel card">
-      <div style="text-align:center">
-        <div class="date label">Ulang Tahun</div>
-        <div class="age" id="countAge">18</div>
-        <div style="opacity:0.9;margin-top:6px">1 Okt 2025</div>
-        <div style="margin-top:14px;text-align:center">
-          <div style="font-weight:700">Countdown</div>
-          <div id="countdown" style="font-size:18px;margin-top:6px">-- hari --:--:--</div>
-        </div>
-      </div>
-    </aside>
   </div>
 
-  <svg class="floating-heart" id="heartSVG" viewBox="0 0 24 24" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 21s-7.5-4.35-9.5-7.2C-1 9.5 3 4 7.5 5.5 10 6.5 12 9 12 9s2-2.5 4.5-3.5C21 4 25 9.5 21.5 13.8 19.5 16.65 12 21 12 21z" fill="#fda4af" opacity="0.95"/>
-  </svg>
-
   <script>
+    // bikin background bintang
     function rand(min,max){return Math.random()*(max-min)+min}
     const stars = document.querySelector('.stars');
     for(let i=0;i<70;i++){
@@ -166,79 +56,13 @@
       stars.appendChild(s);
     }
 
-    const messages = [
-      "Hai Sabrina 💖",
-      "Hari ini kamu 18 — resmi makin kece & bebas ngejar mimpi 😎",
-      "Semoga tiap langkahmu selalu ada senyum dan keberanian.",
-      "Dari: Reii — your skelton wkwk 😏",
-      "Happy Birthday, sayang. Let's celebrate! 🎉"
-    ];
-    const typ = document.getElementById('typewriter');
-    let mi=0; let ci=0;
-    function typeLoop(){
-      if(mi>=messages.length) return;
-      const text = messages[mi];
-      typ.textContent='';
-      ci=0;
-      const t = setInterval(()=>{
-        typ.textContent = text.slice(0,ci+1)+'▌';
-        ci++;
-        if(ci>=text.length){ clearInterval(t); mi++; setTimeout(typeLoop,900); }
-      },40);
-    }
-    setTimeout(typeLoop,800);
-
-    const conf = document.getElementById('confetti');
-    conf.width = innerWidth; conf.height = innerHeight; const ctx = conf.getContext('2d');
-    window.addEventListener('resize',()=>{conf.width=innerWidth;conf.height=innerHeight});
-
-    function shootConfetti(){
-      const pieces = [];
-      for(let i=0;i<160;i++){
-        pieces.push({x:rand(0,conf.width),y:rand(-conf.height,0),vx:rand(-3,3),vy:rand(2,7),r:rand(2,6),c: `hsl(${rand(0,360)}deg,80%,60%)`,rot:rand(0,360)})
-      }
-      let frame=0; const anim = setInterval(()=>{
-        ctx.clearRect(0,0,conf.width,conf.height);
-        for(const p of pieces){ p.x+=p.vx; p.y+=p.vy; p.vy+=0.05; p.rot+=p.vx*2;
-          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*0.017);
-          ctx.fillStyle=p.c; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.8);
-          ctx.restore();
-        }
-        frame++; if(frame>260){ clearInterval(anim); ctx.clearRect(0,0,conf.width,conf.height); }
-      },16);
-    }
-
-    function animateHearts(){
-      const svg = document.getElementById('heartSVG');
-      for(let i=0;i<6;i++){
-        const c = svg.cloneNode(true);
-        c.style.opacity=0; c.style.left = rand(25,75)+'%'; c.style.bottom = '10px';
-        c.style.transform = `translateX(-50%) scale(${rand(0.7,1.2)})`; c.style.zIndex=10;
-        document.body.appendChild(c);
-        setTimeout(()=>{
-          c.style.transition='transform 2.2s cubic-bezier(.2,.8,.2,1),opacity 1.6s';
-          c.style.transform = `translateX(-50%) translateY(-${rand(260,420)}px) scale(${rand(0.8,1.4)})`;
-          c.style.opacity=1;
-          setTimeout(()=>{ c.style.opacity=0; setTimeout(()=>c.remove(),1800); },1200);
-        }, i*200);
-      }
-    }
-
-    document.getElementById('surpriseBtn').addEventListener('click',()=>{
-      const utter = new SpeechSynthesisUtterance(
-        `Selamat ulang tahun Sabrina. Semoga harimu seindah senyummu. Dari Heng.`
-      );
-      utter.rate = 0.95; utter.pitch = 1.05; utter.lang = 'id-ID';
-      speechSynthesis.cancel(); speechSynthesis.speak(utter);
-      shootConfetti(); animateHearts();
-    });
-
+    // countdown
     function updateCountdown(){
       const now = new Date();
-      const target = new Date('2025-10-01T00:00:00');
+      const target = new Date('2025-10-20T00:00:00'); // <<< ubah ke 20 Okt 2025
       const diff = target - now;
       if(diff<=0){
-        document.getElementById('countdown').textContent='Selamat Ulang Tahun! 🎉';
+        document.getElementById('countdown').textContent='Hari ini kita ketemu di sekolah 🎉';
         return;
       }
       const days = Math.floor(diff/86400000);
@@ -249,34 +73,6 @@
         `${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
     }
     updateCountdown(); setInterval(updateCountdown,1000);
-
-    setTimeout(()=>{ shootConfetti(); },1200);
-
-    // SLIDER JS
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
-    const dotsContainer = document.querySelector('.dots');
-
-    let index = 0;
-    images.forEach((_,i)=>{
-      const dot=document.createElement('span');
-      if(i===0) dot.classList.add('active');
-      dotsContainer.appendChild(dot);
-      dot.addEventListener('click',()=>showSlide(i));
-    });
-
-    function showSlide(i){
-      index = i;
-      slides.style.transform = `translateX(-${index*100}%)`;
-      document.querySelectorAll('.dots span').forEach((d,j)=>{
-        d.classList.toggle('active', j===index);
-      });
-    }
-
-    prev.addEventListener('click',()=>showSlide((index-1+images.length)%images.length));
-    next.addEventListener('click',()=>showSlide((index+1)%images.length));
   </script>
 </body>
 </html>
