@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Countdown Ketemu di Sekolah ✨</title>
+  <title>Countdown Ketemu & Pulang Magang ✨</title>
   <style>
     :root{
       --bg1:#0f172a;
@@ -33,20 +33,29 @@
     }
     .hero-title{font-size:32px;margin:0 0 12px 0}
     .countdown-box{margin-top:18px;font-size:22px;font-weight:600}
+    .divider{margin:24px auto;width:80%;height:1px;background:rgba(255,255,255,0.1)}
   </style>
 </head>
 <body>
   <div class="stars"></div>
   <div class="container">
     <div class="card">
-      <h1 class="hero-title">Countdown Ketemu di Sekolah ✨</h1>
+      <h1 class="hero-title">Countdown Spesial ✨</h1>
+
+      <!-- Countdown 1 -->
       <p>Kita bakal ketemu lagi tanggal <b>20 Oktober 2025</b> 🤍</p>
-      <div class="countdown-box" id="countdown">-- hari --:--:--</div>
+      <div class="countdown-box" id="countMeet">-- hari --:--:--</div>
+
+      <div class="divider"></div>
+
+      <!-- Countdown 2 -->
+      <p>Pulang dari tempat magang tanggal <b>18 Oktober 2025 jam 12:00</b> 🕛</p>
+      <div class="countdown-box" id="countIntern">-- hari --:--:--</div>
     </div>
   </div>
 
   <script>
-    // bikin background bintang
+    // background bintang
     function rand(min,max){return Math.random()*(max-min)+min}
     const stars = document.querySelector('.stars');
     for(let i=0;i<70;i++){
@@ -56,23 +65,31 @@
       stars.appendChild(s);
     }
 
-    // countdown
-    function updateCountdown(){
-      const now = new Date();
-      const target = new Date('2025-10-20T00:00:00'); // <<< ubah ke 20 Okt 2025
-      const diff = target - now;
-      if(diff<=0){
-        document.getElementById('countdown').textContent='Hari ini kita ketemu di sekolah 🎉';
-        return;
+    // fungsi countdown umum
+    function makeCountdown(targetDate, elementId, doneText){
+      function update(){
+        const now = new Date();
+        const diff = targetDate - now;
+        const el = document.getElementById(elementId);
+        if(diff<=0){
+          el.textContent = doneText;
+          return;
+        }
+        const days = Math.floor(diff/86400000);
+        const hrs = Math.floor(diff%86400000/3600000);
+        const mins = Math.floor(diff%3600000/60000);
+        const secs = Math.floor(diff%60000/1000);
+        el.textContent = `${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
       }
-      const days = Math.floor(diff/86400000);
-      const hrs = Math.floor(diff%86400000/3600000);
-      const mins = Math.floor(diff%3600000/60000);
-      const secs = Math.floor(diff%60000/1000);
-      document.getElementById('countdown').textContent =
-        `${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+      update();
+      setInterval(update,1000);
     }
-    updateCountdown(); setInterval(updateCountdown,1000);
+
+    // Countdown 1: ketemu di sekolah
+    makeCountdown(new Date('2025-10-20T00:00:00'), 'countMeet', 'Hari ini kita ketemu di sekolah 🎉');
+
+    // Countdown 2: pulang dari magang
+    makeCountdown(new Date('2025-10-18T12:00:00'), 'countIntern', 'Waktunya pulang dari magang 🎉');
   </script>
 </body>
 </html>
